@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const Navbar = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const {user,logOut}=useContext(AuthContext);
+  // console.log(user)
 
   // Handle scroll effect only on homepage
   useEffect(() => {
@@ -25,7 +28,10 @@ const Navbar = () => {
         : 'bg-blue-50'
       : 'bg-gray-100 shadow-md'
   }`;
-
+// sign out method
+  const handleSingOut=()=>{
+    logOut()
+  }
   // Navigation links
   const links = (
     <>
@@ -44,8 +50,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className={navbarClasses}>
-      <div className="navbar max-w-7xl mx-auto px-4 py-2">
+    <div className={`${navbarClasses}  max-w-7xl mx-auto`}>
+      <div className="navbar px-4 py-2">
         {/* Left Side */}
         <div className="navbar-start">
           <div className="dropdown">
@@ -76,9 +82,13 @@ const Navbar = () => {
 
         {/* Right Side */}
         <div className="navbar-end">
-          <Link to="/signIn" className="btn bg-blue-500 text-white hover:bg-blue-950 transform hover:-translate-y-1 transition duration-200">
+         {
+          user?  <Link onClick={handleSingOut} to="/signIn" className="btn bg-blue-600 text-white hover:bg-blue-950 transform hover:-translate-y-1 transition duration-200">
+            Sign Out
+          </Link> :  <Link to="/signIn" className="btn bg-blue-500 text-white hover:bg-blue-950 transform hover:-translate-y-1 transition duration-200">
             Sign In
           </Link>
+         }
           
         </div>
       </div>
