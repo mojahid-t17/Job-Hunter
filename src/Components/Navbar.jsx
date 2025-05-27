@@ -50,7 +50,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className={`${navbarClasses}  max-w-7xl mx-auto`}>
+    <div className={`${navbarClasses}  `}>
       <div className="navbar px-4 py-2">
         {/* Left Side */}
         <div className="navbar-start">
