@@ -1,13 +1,16 @@
 import { CiClock2 } from "react-icons/ci";
 import { TiShoppingBag } from "react-icons/ti";
 import { Link, useLoaderData } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import officeBanner from "../../assets/banner-image/office.jpg";
 import useAuth from "../../Providers/UseAuth";
 
 const JobDetails = () => {
+
+   
   // Load job data from the route loader
   const job = useLoaderData();
-  console.log(job);
+  // console.log(job);
 
   // Determine the class for status label
   const activstatusClass =
@@ -38,7 +41,7 @@ const JobDetails = () => {
     };
 
     // console.log(applicationData);
-
+  
     // Send POST request to submit application
     fetch("http://localhost:5000/applied-jobs", {
       method: "POST",
@@ -50,7 +53,13 @@ const JobDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.message === "applied") {
-          console.log(data.message);
+          // console.log(data.message);
+          
+          toast.error('Already Applied for the job')
+          
+          
+          document.getElementById("my_modal_5").close()
+
         } else {
           console.log("Application submitted:", data);
         }
@@ -59,6 +68,8 @@ const JobDetails = () => {
 
   return (
     <div className="max-w-4xl mx-auto mt-20 px-2">
+      <ToastContainer  />
+
       {/* Top Banner */}
       <div>
         <img

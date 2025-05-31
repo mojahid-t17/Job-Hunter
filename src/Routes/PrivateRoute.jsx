@@ -7,7 +7,7 @@ const PrivateRoute = ({children}) => {
         return children
     }
     if(loader){
-          return <div className='text-center'>
+          return <div className='text-center mt-20'>
             <span className="loading text-blue-700 loading-bars loading-xl  my-10"></span>
           </div>
     }
