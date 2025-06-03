@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -35,8 +36,31 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-
-      setLoader(false);
+      // validate user with jwt http cookies
+      
+      if(currentUser?.email){
+        const user={email: currentUser.email}
+         axios.post('http://localhost:5000/jwt',user,{
+          withCredentials:true
+         })
+         .then(res=>{
+          console.log(res.data)
+           setLoader(false);
+         })
+      }
+      // clear the token
+     else{
+       axios.post('http://localhost:5000/logOut',{},{
+        withCredentials:true
+       })
+       .then(res=>{
+        console.log("session ended",res.data)
+         setLoader(false);
+        
+       })
+     }
+      
+     
     });
     return () => unsubscribe();
   }, []);

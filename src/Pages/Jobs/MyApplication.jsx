@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../Providers/UseAuth";
 
@@ -7,12 +8,19 @@ const MyApplication = () => {
   console.log(user.email);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/applied-jobs?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setJobs(data);
-        // console.log(data);
-      });
+    // fetch(`http://localhost:5000/applied-jobs?email=${user.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setJobs(data);
+    //     // console.log(data);
+    //   });
+   axios.get(`http://localhost:5000/applied-jobs?email=abc@gmail.com`,{
+    withCredentials:true
+   })
+   .then(res=>{
+    setJobs(res.data)
+   })
+   
   }, []);
   return (
     <div className="max-w-6xl mt-18 mx-auto">

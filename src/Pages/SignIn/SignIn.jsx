@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logInAnimation from "../../assets/lotties/signIn.json";
 import { AuthContext } from "../../Providers/AuthProvider";
+
 const SignIn = () => {
   const navigate=useNavigate();
   
@@ -14,12 +15,15 @@ const SignIn = () => {
     const form= e.target;
     const email=form.email.value;
     const password=form.password.value;
-    console.log(email,password)
+    // console.log(email,password)
     logInUser(email,password)
     .then(result=>{
-      console.log(result.user.photoURL)
-      
-      navigate('/jobs')
+      // console.log(result.user.photoURL)
+      console.log(result)
+      // const user={email:email}
+      // axios.post('http://localhost:5000/jwt',user, {withCredentials:true})
+      // .then(res=>{console.log(res.data)})
+      // navigate('/jobs')
        
     })
     .catch(err=>{
