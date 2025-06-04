@@ -1,20 +1,22 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../Providers/UseAuth";
 
 const MyPostedJobs = () => {
+  
     const {user}=useAuth();
     const [jobs,setJobs]= useState([]);
-    console.log(jobs)
+    // console.log(jobs)
     useEffect(()=>{
-       fetch(`http://localhost:5000/jobs?email=${user.email}`)
-       .then(res=>res.json())
-       .then(data=>{
-         setJobs(data)
-       })
+     
+      axios.get(`http://localhost:5000/jobs?email=${user.email}`)
+      .then(res=>setJobs(res.data))
+    
     },[])
+    
     return (
         <div className='max-w-6xl mx-auto mt-20'>
-            <h1>My posted jobs are here:{jobs.length}</h1>
+            <h1 className="text-center font-bold text-3xl my-5">Your posted jobs </h1>
               <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

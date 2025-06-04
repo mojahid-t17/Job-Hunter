@@ -20,10 +20,8 @@ const SignIn = () => {
     .then(result=>{
       // console.log(result.user.photoURL)
       console.log(result)
-      // const user={email:email}
-      // axios.post('http://localhost:5000/jwt',user, {withCredentials:true})
-      // .then(res=>{console.log(res.data)})
-      // navigate('/jobs')
+      
+        navigate('/')
        
     })
     .catch(err=>{

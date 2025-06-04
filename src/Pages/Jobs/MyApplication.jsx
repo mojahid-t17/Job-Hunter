@@ -1,10 +1,13 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Providers/UseAuth";
 
 const MyApplication = () => {
+  
+  const axiosInstanc = useAxiosSecure()
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
+
   console.log(user.email);
 
   useEffect(() => {
@@ -12,13 +15,11 @@ const MyApplication = () => {
     //   .then((res) => res.json())
     //   .then((data) => {
     //     setJobs(data);
-    //     // console.log(data);
+    //     console.log(data);
     //   });
-   axios.get(`http://localhost:5000/applied-jobs?email=abc@gmail.com`,{
-    withCredentials:true
-   })
+   axiosInstanc.get(`/applied-jobs?email=${user.email}`)
    .then(res=>{
-    setJobs(res.data)
+      setJobs(res.data)
    })
    
   }, []);
@@ -39,7 +40,7 @@ const MyApplication = () => {
           <tbody>
             {/* row */}
             {jobs.map((job, idx) => (
-              <tr>
+              <tr key={idx}>
                 <th>{idx + 1}</th>
                 <td>
                   <div className="flex items-center gap-3">
