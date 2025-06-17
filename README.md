@@ -65,7 +65,7 @@
 |----------------|-----------------------------------------------|
 | Frontend       | React, Tailwind CSS, React Router, Framer Motion |
 | Backend        | Node.js, Express.js                          |
-| Database       | MongoDB (with Mongoose or native driver)     |
+| Database       | MongoDB      |
 | Auth           | Firebase Authentication, JWT                 |
 | Deployment     | Firebase Hosting (Frontend), Vercel (Backend) |
 
