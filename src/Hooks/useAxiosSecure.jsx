@@ -2,7 +2,7 @@ import axios from 'axios';
 import useAuth from '../Providers/UseAuth';
 
 const axiosInstance=axios.create({
-    baseURL:'http://localhost:5000',
+    baseURL:'https://job-hunter-server-pi.vercel.app',
     withCredentials:true
 })
 

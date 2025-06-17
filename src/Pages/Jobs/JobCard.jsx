@@ -1,4 +1,3 @@
-import { CiBookmark } from "react-icons/ci";
 import { IoLocation } from "react-icons/io5";
 import { Link } from "react-router-dom";
 const JobCard = ({ job }) => {
@@ -36,11 +35,7 @@ const JobCard = ({ job }) => {
               </div>
             </div>
           </div>
-          <Link>
-             <span className="text-xl hover:text-blue-500">
-            <CiBookmark />
-          </span>
-          </Link>
+          
         </div>
         <div className="mt-6 flex flex-col gap-2 text-xs flex-grow">
           <div className="flex items-center space-x-2">

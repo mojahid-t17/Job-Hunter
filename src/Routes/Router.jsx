@@ -8,6 +8,7 @@ import JobDetails from "../Pages/Jobs/JobDetails";
 import Jobs from "../Pages/Jobs/Jobs";
 import MyApplication from "../Pages/Jobs/MyApplication";
 import MyPostedJobs from "../Pages/Jobs/MyPostedJobs";
+import UpdateJob from "../Pages/Jobs/UpdateJob";
 import SignIn from "../Pages/SignIn/SignIn";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
@@ -37,14 +38,20 @@ const Router = createBrowserRouter([
         {
           path:'/jobs',
           element:<PrivateRoute><Jobs></Jobs></PrivateRoute>,
-           loader:()=>fetch('http://localhost:5000/jobCount')
+           loader:()=>fetch('https://job-hunter-server-pi.vercel.app/jobCount')
           
         },
         {
           path:'/job/:id',
           element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+          loader:({params})=>fetch(`https://job-hunter-server-pi.vercel.app/jobs/${params.id}`)
         },
+        {
+          path:'/editJob/:id',
+          element:<PrivateRoute><UpdateJob></UpdateJob></PrivateRoute>,
+          loader:({params})=>fetch(`https://job-hunter-server-pi.vercel.app/jobs/${params.id}`)
+        }
+        ,
         {
           path: '/addJob',
           element:<PrivateRoute> <Addjob></Addjob></PrivateRoute>

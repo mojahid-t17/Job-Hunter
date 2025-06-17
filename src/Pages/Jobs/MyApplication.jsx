@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Providers/UseAuth";
 
@@ -7,11 +8,12 @@ const MyApplication = () => {
   const axiosInstanc = useAxiosSecure()
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
+  // console.log(jobs)
 
-  console.log(user.email);
+  // console.log(user.email);
 
   useEffect(() => {
-    // fetch(`http://localhost:5000/applied-jobs?email=${user.email}`)
+    // fetch(`https://job-hunter-server-pi.vercel.app/applied-jobs?email=${user.email}`)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     setJobs(data);
@@ -63,11 +65,12 @@ const MyApplication = () => {
                   <br />
                   {/* <span className="badge badge-ghost badge-sm">Desktop Support Technician</span> */}
                 </td>
-                <td>
-                  <button className="btn">X</button>
-                </td>
+                
                 <th>
+                  <Link to={`/job/${job.job_id}`}>
                   <button className="btn btn-ghost btn-xs">Details</button>
+                  </Link>
+                  
                 </th>
               </tr>
             ))}

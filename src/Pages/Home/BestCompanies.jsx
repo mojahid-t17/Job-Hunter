@@ -14,7 +14,7 @@ import office2 from "../../assets/picture/office2.jpg";
 const BestCompanies = () => {
   const isMdUp = useMediaQuery({ query: "(min-width: 768px)" });
   return (
-    <div className="max-w-6xl mx-auto flex mt-4 md:mt-8  px-2 flex-col-reverse md:flex-row">
+    <div className="max-w-6xl mx-auto flex mt-4 md:mt-8  px-2 flex-col-reverse lg:flex-row">
       <div className="md:w-1/2 flex flex-col px-3">
         <div className="md:mt-4">
           <h1 className="text-3xl font-bold ">Find Best Companies.</h1>

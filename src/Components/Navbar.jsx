@@ -50,10 +50,10 @@ const Navbar = () => {
           <summary>Pages</summary>
           <ul className="p-2">
             <li>
-              <NavLink to="/myPostedJobs">My Posted JObs</NavLink>
+              <NavLink className="btn mb-2" to="/myPostedJobs">My Posted JObs</NavLink>
             </li>
-            <li>
-              <NavLink to="/submenu2">Submenu 2</NavLink>
+            <li className="">
+              <NavLink className="btn" to="/addJob">Add Job</NavLink>
             </li>
           </ul>
         </details>

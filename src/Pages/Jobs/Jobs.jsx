@@ -24,7 +24,7 @@ const Jobs = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs?page=${currentPage}&limit=${itemPerPage}`)
+    fetch(`https://job-hunter-server-pi.vercel.app/jobs?page=${currentPage}&limit=${itemPerPage}`)
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);

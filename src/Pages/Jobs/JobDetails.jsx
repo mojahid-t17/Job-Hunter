@@ -43,7 +43,7 @@ const JobDetails = () => {
     // console.log(applicationData);
   
     // Send POST request to submit application
-    fetch("http://localhost:5000/applied-jobs", {
+    fetch("https://job-hunter-server-pi.vercel.app/applied-jobs", {
       method: "POST",
       headers: {
         "content-type": "application/json",

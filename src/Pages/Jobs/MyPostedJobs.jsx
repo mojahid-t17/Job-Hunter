@@ -1,15 +1,53 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { MdModeEdit } from "react-icons/md";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import useAuth from "../../Providers/UseAuth";
 
 const MyPostedJobs = () => {
   
+
     const {user}=useAuth();
     const [jobs,setJobs]= useState([]);
+    const handleDeleteJob=(_id)=>{
+    
+      Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    axios.delete(`https://job-hunter-server-pi.vercel.app/jobs/${_id}`)
+    .then(res=>{
+    
+      // console.log(res.data);
+      if(res.data){
+        if(res.data.deletedCount>0){
+          const remJObs=jobs.filter(job=>job._id!=_id);
+          setJobs(remJObs)
+        }
+         Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+      }
+    })
+    
+   
+  }
+});
+    }
+    
     // console.log(jobs)
     useEffect(()=>{
      
-      axios.get(`http://localhost:5000/jobs?email=${user.email}`)
+      axios.get(`https://job-hunter-server-pi.vercel.app/jobs?email=${user.email}`)
       .then(res=>setJobs(res.data))
     
     },[])
@@ -56,11 +94,13 @@ const MyPostedJobs = () => {
                   <br />
                   {/* <span className="badge badge-ghost badge-sm">Desktop Support Technician</span> */}
                 </td>
-                <td>
-                  <button className="btn">X</button>
+                <td className="flex gap-2">
+                  <button onClick={()=>handleDeleteJob(job._id)} className="btn">X</button>
+                  
+                  <Link to={`/editJob/${job._id}`}><button  className="btn"><MdModeEdit /></button></Link>
                 </td>
                 <th>
-                  <button className="btn btn-ghost btn-xs">Details</button>
+                  <Link to={`/job/${job._id}`} className="btn btn-ghost btn-xs">Details</Link>
                 </th>
               </tr>
             ))}

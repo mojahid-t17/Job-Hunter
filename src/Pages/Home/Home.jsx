@@ -29,7 +29,7 @@ const Home = () => {
   // };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs?page=1&limit=4`)
+    fetch(`https://job-hunter-server-pi.vercel.app/jobs?page=1&limit=4`)
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);

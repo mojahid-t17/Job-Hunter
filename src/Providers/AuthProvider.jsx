@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
       
       if(currentUser?.email){
         const user={email: currentUser.email}
-         axios.post('http://localhost:5000/jwt',user,{
+         axios.post('https://job-hunter-server-pi.vercel.app/jwt',user,{
           withCredentials:true
          })
          .then(res=>{
@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
       }
       // clear the token
      else{
-       axios.post('http://localhost:5000/logOut',{},{
+       axios.post('https://job-hunter-server-pi.vercel.app/logOut',{},{
         withCredentials:true
        })
        .then(res=>{
