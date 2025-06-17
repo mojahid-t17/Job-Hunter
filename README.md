@@ -14,7 +14,6 @@
 ### 🔐 2. Authentication System
 - Email/password login
 - Google login via Firebase
-- Account recovery
 - JWT-based protected routes
 
 ### 💼 3. Job Management
@@ -73,12 +72,6 @@
 
 ---
 
-## 📦 Getting Started
-
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/your-username/job-hunter.git
-   cd job-hunter
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 "# Job-Hunter" 
