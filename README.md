@@ -43,6 +43,7 @@
 - Displays job listings with **pagination**
 - Data fetched dynamically from backend with `/jobCount` for total records
 - Only authenticated users can access
+- Implemented searching and sorting in the jobs cards
 
 ### 📋 Job Details Page (`/job/:id`) *(Private Route)*
 - View job description, company info, and requirements
